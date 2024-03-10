@@ -1,11 +1,13 @@
 import React from 'react';
 
-const App = () => {
+const MainLayout = () => {
     return (
         <div>
-            App
+            MainLayout
         </div>
     );
 };
 
-export default App;
+export {
+    MainLayout
+};
