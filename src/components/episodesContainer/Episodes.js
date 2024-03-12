@@ -7,7 +7,7 @@ import {useSearchParams} from "react-router-dom";
 const Episodes = () => {
     const {episodes} = useSelector(state => state.episodes);
     const dispatch = useDispatch();
-    const [query, setQuery] = useSearchParams({page:'1'});
+    const [query,] = useSearchParams({page:'1'});
     const page = query.get('page');
 
     useEffect(() => {
