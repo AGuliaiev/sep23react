@@ -9,8 +9,15 @@ const authService = {
     register(user:IAuth):IRes<IUser>{
         return apiService.post(urls.auth.register, user)
     },
-    async login(user:IAuth):Promise<void>{
+    async login(user:IAuth):Promise<IUser>{
         const {data} = await apiService.post(urls.auth.login, user);
+        this.setTokens(data)
+        const {data:me} = await this.me();
+        return me;
+    },
+    async refresh():Promise<void>{
+        const refresh = this.getRefreshToken();
+        const {data} = await apiService.post(urls.auth.refresh, {refresh});
         this.setTokens(data)
     },
     me():IRes<IUser>{
